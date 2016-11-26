@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo '' > /etc/hosts
+cat /etc/hosts.d/hosts.conf > /etc/hosts
+
+for i in "$@"
+do
+    sudo cat /etc/hosts.d/$i.conf >> /etc/hosts;
+    echo "APPLY $i DONE"
+done
